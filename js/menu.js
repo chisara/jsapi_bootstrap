@@ -1,4 +1,4 @@
-
+$(function(){
 //////////////////////////////////////////////////////////////////////////////
 // Data
 //////////////////////////////////////////////////////////////////////////////
@@ -118,51 +118,51 @@ var data = {
       link: 'toggleAutomaticUpdates()',
       sub: null,
     },{
-      name: "Viz Property: AreAutomaticUpdatesPaused",
+      name: "Automatic Updates Paused?",
       color: "#002261",
-      describe: "Check to see if autoamatic updates are currently paused",
+      describe: "VizProperty: Check to see if autoamatic updates are currently paused",
       link: 'getAreAutomaticUpdatesPaused()',
       sub: null,
     },{
-      name: "Viz Property: AreToolbarsHidden",
+      name: "Get AreToolbarsHidden",
       color: "#002261",
-      describe: "Check to see if the Toolbar is hidden",
+      describe: "VizProperty: Check to see if the Toolbar is hidden",
       link: 'areToolbarsHidden()',
       sub: null,
     },{
-      name: "Viz Property: AreTabsHidden",
+      name: "Get AreTabsHidden",
       color: "#002261",
-      describe: "Check to see if Tabs are hidden",
+      describe: "VizProperty: Check to see if Tabs are hidden",
       link: 'areTabssHidden()',
       sub: null,
     },{
-      name: "Viz Property: IsHidden",
+      name: "Get IsHidden",
       color: "#002261",
-      describe: "Is this viz currently hidden?",
+      describe: "VizProperty: Is this viz currently hidden?",
       link: 'getIsVizHidden()',
       sub: null,
     },{
-      name: "Viz Property: IsInteractive",
+      name: "Get IsInteractive",
       color: "#002261",
-      describe: "Cut in Beta 8: Is this viz currently interactive?",
+      describe: "VizProperty: Cut in Beta 8: Is this viz currently interactive?",
       link: 'getIsInteractive()',
       sub: null,
     },{
-      name: "Viz Property: ParentElement",
+      name: "Get ParentElement",
       color: "#002261",
-      describe: "What is the parent HTML element into which this viz is embedded",
+      describe: "VizProperty: What is the parent HTML element into which this viz is embedded",
       link: 'getParentElement()',
       sub: null,
     },{
-      name: "Viz Property: Url",
+      name: "Get Url",
       color: "#002261",
-      describe: "What is the URL of this viz",
+      describe: "VizProperty: What is the URL of this viz",
       link: 'getURL()',
       sub: null,
     },{
-      name: "Viz Property: Workbook",
+      name: "GetWorkbook",
       color: "#002261",
-      describe: "Return the Workbook object - message box output won't be interesting",
+      describe: "VizProperty: Return the Workbook object - message box output won't be interesting",
       link: 'getWorkbook()',
       sub: null,
     },{
@@ -935,21 +935,26 @@ var data = {
   }]
 };
 
-//called with every property and it's value
-function process(key,value) {
-    console.log(key + " : "+value);
-}
+var getMenuItem = function (itemData){
+	var item = $("<li>").append($("<a>", {
+		onClick: itemData.link,
+		html: itemData.name
+	}));
+	if(itemData.sub){
+		var subList = $('<li id="sub">');
+		$.each(itemData.sub, function() {
+			subList.append(getMenuItem(this));
+		});
+		item.append(subList);
+	}
+	return item;
+};
 
-function traverse(data,func) {
-    for (var i in data) {
-        func.apply(this,[i,data[i]]);  
-        if (data[i] !== null && typeof(data[i])=="object") {
-            //going on step down in the object tree!!
-            traverse(data[i],func);
-        }
-    }
-}
+var $menu = $("#menu");
+$.each(data.menu, function(){
+	$menu.append(getMenuItem(this));
+});
 
-//that's all... no magic, no bloated framework
-traverse(data,process);
 
+
+});

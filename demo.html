@@ -33,7 +33,6 @@
 
 		<div class="navbar-wrapper">
 			<div class="container">
-
 				<nav class="navbar navbar-inverse navbar-static-top">
 					<div class="container">
 						<div class="navbar-header">
@@ -91,10 +90,11 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-sm-3 col-md-2 sidebar">
-					<ul class="nav nav-sidebar">
+					<ul class="nav nav-sidebar" id="menu">
 						<!-- to make bar active	
 						<li class="active"> <a href="#">Reports</a><span class="sr-only">(current)</span> </li> 
 						-->
+<!--
 						<li> <a href="#">Start Here</a>
 							<li id="sub"><a href="#">Render Viz</a></li>
 						</li>
@@ -109,7 +109,8 @@
 						<li> <a href="#">StoryPoint Class</a> </li>
 						<li> <a href="#">StoryPointInfo Class</a> </li>
 						<li> <a href="#">Parameter Class</a> </li>
-						<li> <a href="#">Filter Class</a> </li>																														
+						<li> <a href="#">Filter Class</a> </li>	-->
+						
 					</ul>
 				</div>
 				
@@ -128,9 +129,11 @@
 							</span>
 						</div>
 					</div>
+					<div id="vizBox">
+					<div id="vizArea"></div> </div>
 				</div>
 
-				<div id="vizArea"></div>
+				
 
 				</div>
 			</div>
@@ -142,6 +145,8 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<script src="../jsapi_bootstrap/js/bootstrap.min.js"></script>
 		<script src="../jsapi_bootstrap/js/menu.js"></script>
+		<script src="../jsapi_bootstrap/js/mainScript.js"></script>
+		<script src="http://public.tableau.com/javascripts/api/tableau-2.0.0.js"></script>
 		<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
 		<!-- <script src="../jsapi_bootstrap/assets/vendor/holder.min.js"></script> -->
 		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
