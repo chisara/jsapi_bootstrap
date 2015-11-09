@@ -47,6 +47,7 @@ body {
     background-color: #f5f5f5;
     border-right: 1px solid #eee;
     width: 250px;
+    height: 960px;
   }
 }
 
@@ -91,13 +92,7 @@ body {
   margin-top: 0;
 }
 
-.main #vizBox{
-	padding-right: 250px;
-	margin: 20px;
-	//background-color: #000000;
-	width: 750px;
-	height: 750px;
-}
+
 
 
 /*

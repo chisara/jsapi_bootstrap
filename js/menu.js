@@ -1,6 +1,6 @@
 $(function(){
 //////////////////////////////////////////////////////////////////////////////
-// Data
+// JSON Data to populate the menu system on the left of demo.html
 //////////////////////////////////////////////////////////////////////////////
 
 var data = {
@@ -34,10 +34,16 @@ var data = {
       link: 'dispose()',
       sub: null,
     },{
-      name: "Download Workbook",
+      name: "Hide Viz",
       color: "#002261",
       describe: "Download the workbook you are viewing",
       link: 'hideViz()',
+      sub: null,
+    },{
+      name: "Download Workbook",
+      color: "#002261",
+      describe: "Download the workbook you are viewing",
+      link: 'downLoad()',
       sub: null,
     },{
       name: "Export Crosstab",
@@ -938,7 +944,8 @@ var data = {
 var getMenuItem = function (itemData){
 	var item = $("<li>").append($("<a>", {
 		onClick: itemData.link,
-		html: itemData.name
+		html: itemData.name,
+		onHover: itemData.describe
 	}));
 	if(itemData.sub){
 		var subList = $('<li id="sub">');
@@ -949,6 +956,8 @@ var getMenuItem = function (itemData){
 	}
 	return item;
 };
+
+
 
 var $menu = $("#menu");
 $.each(data.menu, function(){
